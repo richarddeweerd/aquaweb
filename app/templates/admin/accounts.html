@@ -5,6 +5,13 @@
 <h1>Accounts, {{ current_user.full_name }}!</h1>
 
 <table>
+    <tr valign="top">
+        <th>Avatar</th>
+        <th>Username</th>
+        <th>Full name</th>
+        <th>Email</th>
+        <th>Last seen</th>
+    </tr>
     {% for account in accounts %}
         {% include 'admin/_account.html' %}
     {% endfor %}    
