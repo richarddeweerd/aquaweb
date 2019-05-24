@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block metas %}
+{{super()}}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+{% endblock %}
 
 {% block app_content %}
 <h1>Hi, {{ current_user.full_name }}!</h1>
