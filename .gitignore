@@ -105,6 +105,7 @@ venv.bak/
 .mypy_cache/
 
 .pylintrc
+pylintplugins.py
 
 /app/config.py
 /logs/

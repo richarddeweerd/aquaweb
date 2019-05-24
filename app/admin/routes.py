@@ -7,5 +7,14 @@ from app.admin import bp
 
 @bp.route('/admin/accounts')
 def accounts():
-    #return render_template('index.html')
-    return "admin page"
+    from models import User
+
+    # User is the name of table that has a column name
+    accounts = User.query.all()
+
+    return render_template('admin/accounts.html', accounts=accounts)
+    
+
+@bp.route('/admin/measure')
+def measure():
+    return render_template('admin/measure.html')

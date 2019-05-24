@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block app_content %}
+<h1>Accounts, {{ current_user.full_name }}!</h1>
+
+<table>
+    {% for account in accounts %}
+        {% include '_account.html' %}
+    {% endfor %}    
+</table>
+
+{% endblock %}
