@@ -1,0 +1,91 @@
+
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - ReefControl{% else %}Welcome to ReefControl{% endif %}
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+    <link rel="stylesheet" href="/style/aquaweb.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
+    <link rel="manifest" href="/images/icon/site.webmanifest">
+    <link rel="mask-icon" href="/images/icon/safari-pinned-tab.svg" color="#1a97fb">
+    <link rel="shortcut icon" href="/images/icon/favicon.ico">
+{% endblock %}
+
+
+{% block metas %}
+{{super()}}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/images/icon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+{% endblock %}
+
+{% block navbar %}
+    
+    <nav class="navbar navbar-default">
+        <div class="container">    
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>                
+                <a class="navbar-brand" href="{{ url_for('main.index') }}"><img src="/images/logo_1.png" alt="Logo" class="img-responsive logo"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                    <li><a href="{{ url_for('main.secure') }}">Secure</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if not current_user.is_anonymous %}
+
+                    {% if current_user.level >= 9 %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggel" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('admin.accounts') }}">Accounts</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li><a href="#">Link 3</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                    {% else %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggel" data-toggle="dropdown" href="#">{{ current_user.full_name }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
+                            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}
