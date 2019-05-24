@@ -21,7 +21,7 @@ def index():
 @bp.route('/secure')
 @login_required
 def secure():
-    return "Secret data!" 
+    return render_template('index.html')
 
 
 @bp.route('/user/<username>')
