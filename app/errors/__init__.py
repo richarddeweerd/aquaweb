@@ -1,5 +1,5 @@
+'''BP init for error module'''
+
 from flask import Blueprint
-
-bp = Blueprint('errors', __name__)
-
 from app.errors import handlers
+BP = Blueprint('errors', __name__)

@@ -1,8 +1,10 @@
-from flask import render_template, redirect, url_for, flash, request
-from werkzeug.urls import url_parse
+'''Auth module routes'''
+
+from flask import render_template, redirect, url_for, flash
+#from werkzeug.urls import url_parse
 from flask_login import login_user, logout_user, current_user
-from app import db
-from app.auth import bp
+from app import DB as db
+from app.auth import BP as bp
 from app.auth.forms import LoginForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User
 from app.auth.email import send_password_reset_email
@@ -10,6 +12,7 @@ from app.auth.email import send_password_reset_email
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
+    '''Route to login'''
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
     form = LoginForm()
@@ -24,11 +27,13 @@ def login():
 
 @bp.route('/logout')
 def logout():
+    '''rout to logout'''
     logout_user()
     return redirect(url_for('main.index'))
 
 @bp.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
+    '''Route for pwd reset request'''
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
     form = ResetPasswordRequestForm()
@@ -43,6 +48,7 @@ def reset_password_request():
 
 @bp.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
+    '''Route for pwd reset'''
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
     user = User.verify_reset_password_token(token)

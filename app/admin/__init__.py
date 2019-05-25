@@ -1,5 +1,5 @@
+'''BP init for Admin module'''
 from flask import Blueprint
-
-bp = Blueprint('admin', __name__)
-
 from app.admin import routes
+
+BP = Blueprint('admin', __name__)

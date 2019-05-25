@@ -1,5 +1,5 @@
+'''BP init for authentication module'''
 from flask import Blueprint
-
-bp = Blueprint('auth', __name__)
-
 from app.auth import routes
+
+BP = Blueprint('auth', __name__)
