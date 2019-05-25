@@ -2,7 +2,7 @@
 
 from flask_mail import Message
 from flask import current_app
-from app import mail
+from app import MAIL
 
 def send_email(subject, sender, recipients, text_body, html_body):
     '''Send email'''
@@ -10,5 +10,5 @@ def send_email(subject, sender, recipients, text_body, html_body):
     msg.body = text_body
     msg.html = html_body
     with current_app.app_context():
-        mail.send(msg)
+        MAIL.send(msg)
         

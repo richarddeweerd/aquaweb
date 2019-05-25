@@ -11,7 +11,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
 from app.config import Config
-from app import models
+
 
 DB = SQLAlchemy()
 MIGRATE = Migrate()
@@ -72,3 +72,7 @@ def create_app(config_class=Config):
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)
     return app
+
+#pylint: disable=wrong-import-position
+from app import models
+#pylint: enable=wrong-import-position
