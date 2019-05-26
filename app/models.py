@@ -31,7 +31,7 @@ class User(UserMixin, db.Model):
     full_name = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     level_id = db.Column(db.Integer, db.ForeignKey('user_level.id'))
-    
+
     def __repr__(self):
         return '<User {}>'.format(self.username)
 

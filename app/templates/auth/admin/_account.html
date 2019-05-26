@@ -1,0 +1,12 @@
+<tr valign="top">
+    <td><img src="{{ account.avatar(36) }}"></td>
+    <td>{{ account.username }}</td>
+    <td>{{ account.full_name }}</td>
+    <td>{{ account.email }}</td>
+    <td>{{ account.last_seen }}</td>
+    <td>{{ account.level.levelname }}</td>
+    <td>
+        <a href="{{ url_for('auth.edit_account', uid=account.id ) }}">edit</a>
+        <a href="{{ url_for('auth.set_account_password', uid=account.id ) }}">password</a>
+    </td>
+</tr>
