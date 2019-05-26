@@ -12,6 +12,15 @@ from flask import current_app
 from app import DB as db
 from app import LOGIN as login
 
+class UserLevel(db.Model):
+    '''User level class definition'''
+    id = db.Column(db.Integer, primary_key=True)
+    levelname = db.Column(db.String(64), index=True, unique=True)
+
+    def __repr__(self):
+        return '<User {}>'.format(self.levelname)
+
+
 class User(UserMixin, db.Model):
     '''User class definition'''
     id = db.Column(db.Integer, primary_key=True)
