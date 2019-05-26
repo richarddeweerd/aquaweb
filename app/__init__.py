@@ -1,43 +1,49 @@
+'''Init for Main app'''
+
+import os
+import logging
+from logging.handlers import RotatingFileHandler, SMTPHandler
+
 from flask import Flask, request, current_app
-from app.config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
-import logging
-from logging.handlers import RotatingFileHandler, SMTPHandler
-import os
+from app.config import Config
 
-db = SQLAlchemy()
-migrate = Migrate()
-login = LoginManager()
-login.login_view = 'login'
-mail = Mail()
-bootstrap = Bootstrap()
+
+DB = SQLAlchemy()
+MIGRATE = Migrate()
+LOGIN = LoginManager()
+LOGIN.login_view = 'login'
+MAIL = Mail()
+BOOTSTRAP = Bootstrap()
 
 
 def create_app(config_class=Config):
+    '''Init app'''
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    db.init_app(app)
-    migrate.init_app(app, db)
-    login.init_app(app)
-    mail.init_app(app)
-    bootstrap.init_app(app)
-    
-    from app.main import bp as main_bp
-    app.register_blueprint(main_bp)
+    DB.init_app(app)
+    MIGRATE.init_app(app, DB)
+    LOGIN.init_app(app)
+    MAIL.init_app(app)
+    BOOTSTRAP.init_app(app)
 
-    from app.errors import bp as errors_bp
-    app.register_blueprint(errors_bp)
+    from app.admin import BP as admin_bp
+    app.register_blueprint(admin_bp)
 
-    from app.auth import bp as auth_bp
+    from app.auth import BP as auth_bp
     app.register_blueprint(auth_bp)
 
-    from app.admin import bp as admin_bp
-    app.register_blueprint(admin_bp)
+    from app.errors import BP as errors_bp
+    app.register_blueprint(errors_bp)
+
+    from app.main import BP as main_bp
+    app.register_blueprint(main_bp)
+
 
     if not app.debug:
 
@@ -67,4 +73,6 @@ def create_app(config_class=Config):
             app.logger.addHandler(mail_handler)
     return app
 
+#pylint: disable=wrong-import-position
 from app import models
+#pylint: enable=wrong-import-position

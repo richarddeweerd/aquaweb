@@ -1,5 +1,8 @@
+'''BP init for Admin module'''
 from flask import Blueprint
 
-bp = Blueprint('admin', __name__)
 
+BP = Blueprint('admin', __name__)
+#pylint: disable=wrong-import-position
 from app.admin import routes
+#pylint: enable=wrong-import-position

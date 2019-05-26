@@ -19,8 +19,6 @@
 
 {% block metas %}
 {{super()}}
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/images/icon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
@@ -47,11 +45,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if not current_user.is_anonymous %}
 
-                    {% if current_user.level >= 9 %}
+                    {% if current_user.level_id >= 9 %}
                     <li class="dropdown">
                         <a class="dropdown-toggel" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('admin.accounts') }}">Accounts</a></li>
+                            <li><a href="{{ url_for('auth.accounts') }}">Accounts</a></li>
                             <li><a href="#">Link 2</a></li>
                             <li><a href="#">Link 3</a></li>
                         </ul>
@@ -64,7 +62,9 @@
                     <li class="dropdown">
                         <a class="dropdown-toggel" data-toggle="dropdown" href="#">{{ current_user.full_name }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
+                            <li><a href="{{ url_for('auth.view_profile') }}">View Profile</a></li>
+                            <li><a href="{{ url_for('auth.edit_profile') }}">Edit Profile</a></li>
+                            <li><a href="{{ url_for('auth.change_pwd') }}">Chang Password</a></li>
                             <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                         </ul>
                     </li>
