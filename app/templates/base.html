@@ -45,7 +45,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if not current_user.is_anonymous %}
 
-                    {% if current_user.level >= 9 %}
+                    {% if current_user.level_id >= 9 %}
                     <li class="dropdown">
                         <a class="dropdown-toggel" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
                         <ul class="dropdown-menu">
