@@ -8,4 +8,26 @@
 
 {% block app_content %}
 <h1>Hi, {{ current_user.full_name }}!</h1>
+
+<table>
+    <tr>
+        <td>Temp 1:</td>
+        <td id="param_t1"></td>
+    </tr>
+</table>
+
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+<script>
+    function get_data(){ 
+        $.getJSON("/data/current", function (data, status){
+            document.getElementById("param_t1").innerHTML = data.T1;
+        });
+    }
+    get_data();
+    setInterval(get_data, 10000);
+</script>
 {% endblock %}
