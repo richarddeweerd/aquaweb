@@ -16,6 +16,7 @@ class UserLevel(db.Model):
     '''User level class definition'''
     id = db.Column(db.Integer, primary_key=True)
     levelname = db.Column(db.String(64), index=True, unique=True)
+    users = db.relationship('User', backref='level', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.levelname)
@@ -29,8 +30,8 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     full_name = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
-    level = db.Column(db.Integer)
-
+    level_id = db.Column(db.Integer, db.ForeignKey('user_level.id'))
+    
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
