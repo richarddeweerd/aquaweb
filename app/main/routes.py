@@ -36,7 +36,7 @@ def current_data():
     temp = -100
     try:
         fileh = open("/sys/bus/w1/devices/28-0415a27b39ff/w1_slave", 'r')
-        # Store configuration file values
+
         lines = fileh.readlines()
         fileh.close()
         equals_pos = lines[1].find('t=')
@@ -44,7 +44,6 @@ def current_data():
             temp = lines[1][equals_pos + 2:]
             temp = float(temp)/1000
     except FileNotFoundError:
-        # Keep preset values
         pass
 
     data = {'T1': temp}
