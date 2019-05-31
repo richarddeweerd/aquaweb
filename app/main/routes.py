@@ -1,5 +1,7 @@
 '''Routes for main BP'''
 
+import json
+
 from datetime import datetime
 from flask import render_template, jsonify
 from flask_login import current_user, login_required
@@ -29,22 +31,25 @@ def secure():
     '''secure page'''
     return render_template('index.html')
 
+def file_to_dict(fname):
+    data = {}
+
+    try:
+        with open(fname) as json_file:  
+            data = json.load(json_file)
+    except:
+        pass
+    return data
+
 @bp.route('/data/current')
 #@login_required
 def current_data():
     '''json data page'''
-    temp = -100
-    try:
-        fileh = open("/sys/bus/w1/devices/28-0415a27b39ff/w1_slave", 'r')
+    data = {}
+    data["moon"] = file_to_dict("/var/aquarium/temperature")
+    data["raw"] = {"temperature" : file_to_dict("/var/aquarium/temperature")}
 
-        lines = fileh.readlines()
-        fileh.close()
-        equals_pos = lines[1].find('t=')
-        if equals_pos != -1:
-            temp = lines[1][equals_pos + 2:]
-            temp = float(temp)/1000
-    except FileNotFoundError:
-        pass
-
-    data = {'T1': temp}
     return jsonify(data)
+
+
+
