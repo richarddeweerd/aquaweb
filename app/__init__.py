@@ -16,7 +16,7 @@ from app.config import Config
 DB = SQLAlchemy()
 MIGRATE = Migrate()
 LOGIN = LoginManager()
-LOGIN.login_view = 'login'
+LOGIN.login_view = 'auth.login'
 MAIL = Mail()
 BOOTSTRAP = Bootstrap()
 
