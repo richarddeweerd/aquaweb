@@ -38,6 +38,7 @@ def file_to_dict(fname):
         with open(fname) as json_file:  
             data = json.load(json_file)
     except:
+        data["error"] = "No data file"
         pass
     return data
 
