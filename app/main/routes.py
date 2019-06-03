@@ -47,8 +47,8 @@ def file_to_dict(fname):
 def current_data():
     '''json data page'''
     data = {}
-    data["moon"] = file_to_dict("/var/aquarium/temperature")
-    data["raw"] = {"temperature" : file_to_dict("/var/aquarium/temperature")}
+    data["moon"] = file_to_dict("/var/aquarium/moon")
+    data["raw"] = {"temperature" : file_to_dict("/var/aquarium/rawdata/temperature")}
 
     return jsonify(data)
 
