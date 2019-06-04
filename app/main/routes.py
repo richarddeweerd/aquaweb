@@ -32,14 +32,15 @@ def secure():
     return render_template('index.html')
 
 def file_to_dict(fname):
+    '''Read json file and return dictionary'''
     data = {}
 
     try:
-        with open(fname) as json_file:  
+        with open(fname) as json_file:
             data = json.load(json_file)
-    except:
+    except IOError:
         data["error"] = "No data file"
-        pass
+
     return data
 
 @bp.route('/data/current')
@@ -51,8 +52,7 @@ def current_data():
     data["baro"] = file_to_dict("/var/aquarium/baro")
     data["config"] = {"devices" : file_to_dict("/var/aquarium/config/devices")}
     rawdat = {}
-    rawdat["temperatur"] = file_to_dict("/var/aquarium/rawdata/temperature")
+    rawdat["temperature"] = file_to_dict("/var/aquarium/rawdata/temperature")
     rawdat["analog"] = file_to_dict("/var/aquarium/rawdata/analog")
     data["raw"] = rawdat
     return jsonify(data)
-
