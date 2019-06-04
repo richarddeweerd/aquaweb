@@ -50,7 +50,9 @@ def current_data():
     data["moon"] = file_to_dict("/var/aquarium/moon")
     data["baro"] = file_to_dict("/var/aquarium/baro")
     data["config"] = {"devices" : file_to_dict("/var/aquarium/config/devices")}
-    data["raw"] = {"temperature" : file_to_dict("/var/aquarium/rawdata/temperature")}
-    data["raw"] = {"analog" : file_to_dict("/var/aquarium/rawdata/analog")}
+    rawdat = {}
+    rawdat["temperatur"] = file_to_dict("/var/aquarium/rawdata/temperature")
+    rawdat["analog"] = file_to_dict("/var/aquarium/rawdata/analog")
+    data["raw"] = rawdat
     return jsonify(data)
 
