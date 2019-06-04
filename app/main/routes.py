@@ -48,9 +48,9 @@ def current_data():
     '''json data page'''
     data = {}
     data["moon"] = file_to_dict("/var/aquarium/moon")
+    data["baro"] = file_to_dict("/var/aquarium/baro")
+    data["config"] = {"devices" : file_to_dict("/var/aquarium/config/devices")}
     data["raw"] = {"temperature" : file_to_dict("/var/aquarium/rawdata/temperature")}
-
+    data["raw"] = {"analog" : file_to_dict("/var/aquarium/rawdata/analog")}
     return jsonify(data)
-
-
 
