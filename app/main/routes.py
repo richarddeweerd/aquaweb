@@ -48,6 +48,7 @@ def file_to_dict(fname):
 def current_data():
     '''json data page'''
     data = {}
+    data["status"] = file_to_dict("/var/aquarium/status")
     data["moon"] = file_to_dict("/var/aquarium/moon")
     data["baro"] = file_to_dict("/var/aquarium/baro")
     data["config"] = {"devices" : file_to_dict("/var/aquarium/config/devices")}

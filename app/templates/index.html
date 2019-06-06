@@ -11,9 +11,22 @@
 
 <table>
     <tr>
-        <td>Temp 1:</td>
-        <td id="param_t1"></td>
+        <td>Online since:</td>
+        <td id="param_online"></td>
     </tr>
+    <tr>
+        <td>Temp Onboard:</td>
+        <td id="param_t0"></td>
+    </tr>
+    <tr>
+        <td>Temp Baro:</td>
+        <td id="param_tb"></td>
+    </tr>
+    <tr>
+        <td>Baro:</td>
+        <td id="param_baro"></td>
+    </tr>
+
 </table>
 
 {% endblock %}
@@ -24,7 +37,10 @@
 <script>
     function get_data(){ 
         $.getJSON("/data/current", function (data, status){
-            document.getElementById("param_t1").innerHTML = data.T1;
+            document.getElementById("param_online").innerHTML = data.status.StartTime;
+            document.getElementById("param_t0").innerHTML = data.raw.temperature[0].temperature;
+            document.getElementById("param_tb").innerHTML = data.baro.temp;
+            document.getElementById("param_baro").innerHTML = data.baro.pressure;
         });
     }
     get_data();
