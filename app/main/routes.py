@@ -48,12 +48,10 @@ def file_to_dict(fname):
 def current_data():
     '''json data page'''
     data = {}
-    data["status"] = file_to_dict("/var/aquarium/status")
+    data["analog"] = file_to_dict("/var/aquarium/analog")
+    #data["status"] = file_to_dict("/var/aquarium/status")
     data["moon"] = file_to_dict("/var/aquarium/moon")
     data["baro"] = file_to_dict("/var/aquarium/baro")
-    data["config"] = {"devices" : file_to_dict("/var/aquarium/config/devices")}
-    rawdat = {}
-    rawdat["temperature"] = file_to_dict("/var/aquarium/rawdata/temperature")
-    rawdat["analog"] = file_to_dict("/var/aquarium/rawdata/analog")
-    data["raw"] = rawdat
+    data["config"] =file_to_dict("/var/aquarium/config")}
+    data["temperature"] =file_to_dict("/var/aquarium/temperature")}
     return jsonify(data)
