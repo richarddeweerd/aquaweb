@@ -15,8 +15,12 @@
         <td id="param_online"></td>
     </tr>
     <tr>
-        <td>Temp Onboard:</td>
-        <td id="param_t0"></td>
+        <td>Raw Temp 0:</td>
+        <td id="param_rt0"></td>
+    </tr>
+    <tr>
+        <td>Raw Temp 1:</td>
+        <td id="param_rt1"></td>
     </tr>
     <tr>
         <td>Temp Baro:</td>
@@ -26,7 +30,34 @@
         <td>Baro:</td>
         <td id="param_baro"></td>
     </tr>
-
+    <tr>
+        <td>Analog 0:</td>
+        <td id="param_analog_0"></td>
+    </tr>
+    <tr>
+        <td>Analog 1:</td>
+        <td id="param_analog_1"></td>
+    </tr>
+    <tr>
+        <td>Analog 2:</td>
+        <td id="param_analog_2"></td>
+    </tr>
+    <tr>
+        <td>Analog 3:</td>
+        <td id="param_analog_3"></td>
+    </tr>
+    <tr>
+        <td>Moon age:</td>
+        <td id="param_moon_age"></td>
+    </tr>
+    <tr>
+        <td>Moon illuminated:</td>
+        <td id="param_moon_ill"></td>
+    </tr>
+    <tr>
+        <td>Moon phase:</td>
+        <td id="param_moon_phase"></td>
+    </tr>
 </table>
 
 {% endblock %}
@@ -37,10 +68,18 @@
 <script>
     function get_data(){ 
         $.getJSON("/data/current", function (data, status){
-            document.getElementById("param_online").innerHTML = data.status.StartTime;
-            document.getElementById("param_t0").innerHTML = data.raw.temperature[0].temperature;
-            document.getElementById("param_tb").innerHTML = data.baro.temp;
+            document.getElementById("param_online").innerHTML = data.config.starttime;
+            document.getElementById("param_rt0").innerHTML = data.temperature.raw[0].temperature;
+            document.getElementById("param_rt1").innerHTML = data.temperature.raw[1].temperature;
+            document.getElementById("param_tb").innerHTML = data.baro.temperature;
             document.getElementById("param_baro").innerHTML = data.baro.pressure;
+            document.getElementById("param_analog_0").innerHTML = data.analog.analog_0;
+            document.getElementById("param_analog_1").innerHTML = data.analog.analog_1;
+            document.getElementById("param_analog_2").innerHTML = data.analog.analog_2;
+            document.getElementById("param_analog_3").innerHTML = data.analog.analog_3;
+            document.getElementById("param_moon_age").innerHTML = data.moon.age;
+            document.getElementById("param_moon_ill").innerHTML = data.moon.illuminated;
+            document.getElementById("param_moon_phase").innerHTML = data.moon.phase;
         });
     }
     get_data();
