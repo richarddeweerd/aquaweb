@@ -1,4 +1,4 @@
-'''Admin module routes'''
+'''Settings module routes'''
 from flask import render_template
 from flask_login import login_required
 from app.settings import BP as bp
@@ -16,16 +16,16 @@ from app.settings import BP as bp
 @login_required
 def parameters():
     '''Screen with measurment types list'''
-    return render_template('admin/parameters.html')
+    return render_template('settings/parameters.html')
 
 @bp.route('/settings/outputs')
 @login_required
 def outputs():
     '''Screen with measurment types list'''
-    return render_template('admin/outputs.html')
+    return render_template('settings/outputs.html')
 
 @bp.route('/settings/temperature')
 @login_required
 def temperature():
     '''Screen with measurment types list'''
-    return render_template('admin/temperature.html')
+    return render_template('settings/temperature.html')
