@@ -31,8 +31,8 @@ def create_app(config_class=Config):
     MAIL.init_app(app)
     BOOTSTRAP.init_app(app)
 
-    from app.admin import BP as admin_bp
-    app.register_blueprint(admin_bp)
+    from app.settings import BP as settings_bp
+    app.register_blueprint(settings_bp)
 
     from app.auth import BP as auth_bp
     app.register_blueprint(auth_bp)

@@ -40,7 +40,20 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('main.index') }}">Home</a></li>
-                    <li><a href="{{ url_for('main.secure') }}">Secure</a></li>
+                    {% if not current_user.is_anonymous %}
+
+                    {% if current_user.level_id >= 9 %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggel" data-toggle="dropdown" href="#">Config<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('settings.temperature') }}">Temperature sensors</a></li>
+                            <li><a href="{{ url_for('settings.outputs') }}">Outputs</a></li>
+                            <li><a href="{{ url_for('settings.parameters') }}">Parameters</a></li>
+                            <li><a href="#">Link 3</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if not current_user.is_anonymous %}
