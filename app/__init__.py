@@ -20,7 +20,6 @@ LOGIN.login_view = 'auth.login'
 MAIL = Mail()
 BOOTSTRAP = Bootstrap()
 
-
 def create_app(config_class=Config):
     '''Init app'''
     app = Flask(__name__)

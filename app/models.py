@@ -12,6 +12,28 @@ from flask import current_app
 from app import DB as db
 from app import LOGIN as login
 
+
+class TempHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    t0 = db.Column(db.Float)
+    t1 = db.Column(db.Float)
+    t2 = db.Column(db.Float)
+    t3 = db.Column(db.Float)
+    t4 = db.Column(db.Float)
+    time = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+class ReefConfig(db.Model):
+    '''Configuration class definition'''
+    id = db.Column(db.Integer, primary_key=True)
+    t0 = db.Column(db.String(20))
+    t1 = db.Column(db.String(20))
+    t2 = db.Column(db.String(20))
+    t3 = db.Column(db.String(20))
+    t4 = db.Column(db.String(20))
+    last_updated = db.Column(db.DateTime, default=datetime.utcnow)
+
+
 class UserLevel(db.Model):
     '''User level class definition'''
     id = db.Column(db.Integer, primary_key=True)
@@ -19,7 +41,7 @@ class UserLevel(db.Model):
     users = db.relationship('User', backref='level', lazy='dynamic')
 
     def __repr__(self):
-        return '<User {}>'.format(self.levelname)
+        return '<Level {}>'.format(self.levelname)
 
 
 class User(UserMixin, db.Model):
