@@ -14,18 +14,18 @@ from app.settings import BP as bp
 
 @bp.route('/settings/parameters')
 @login_required
-def measure():
+def parameters():
     '''Screen with measurment types list'''
     return render_template('admin/parameters.html')
 
 @bp.route('/settings/outputs')
 @login_required
-def measure():
+def outputs():
     '''Screen with measurment types list'''
     return render_template('admin/outputs.html')
 
 @bp.route('/settings/temperature')
 @login_required
-def measure():
+def temperature():
     '''Screen with measurment types list'''
     return render_template('admin/temperature.html')
