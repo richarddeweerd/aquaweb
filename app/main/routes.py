@@ -52,6 +52,13 @@ def current_data():
     #data["status"] = file_to_dict("/var/aquarium/status")
     data["moon"] = file_to_dict("/var/aquarium/moon")
     data["baro"] = file_to_dict("/var/aquarium/baro")
-    data["config"] =file_to_dict("/var/aquarium/config")
-    data["temperature"] =file_to_dict("/var/aquarium/temperature")
+    data["config"] = file_to_dict("/var/aquarium/config")
+    data["temperature"] = file_to_dict("/var/aquarium/temperature")
+    return jsonify(data)
+
+@bp.route('/data/rawtemp')
+#@login_required
+def data_rawtemp():
+    '''json data page'''
+    data = file_to_dict("/var/aquarium/rawtemp")
     return jsonify(data)
