@@ -33,6 +33,9 @@ def temperature():
 
     senlist = [('Sensor 1', 'Sensor 1'), ('Sensor 2', 'Sensor 2'), ('Sensor 3', 'Sensor 3')]
     form.t0.choices = senlist
-
+    form.t1.choices = senlist
+    form.t2.choices = senlist
+    form.t3.choices = senlist
+    form.t4.choices = senlist
 
     return render_template('settings/temperature.html', title='Temperature sensor setup', form=form)

@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class TemperatureForm(FlaskForm):
     '''Form to edit the Temperature sensors'''
-    t0 = SelectField('t0', coerce=str)
+    t0 = SelectField('Temp0', coerce=str)
     t1 = SelectField('t1', coerce=str)
     t2 = SelectField('t2', coerce=str)
     t3 = SelectField('t3', coerce=str)
