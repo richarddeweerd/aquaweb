@@ -7,7 +7,7 @@
     <p>
         {{ form.t0.label }}<br>
         {{ form.t0(cols=60) }}<br>
-        {% for error in form.level.errors %}
+        {% for error in form.t0.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
