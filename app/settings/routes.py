@@ -30,8 +30,15 @@ def temperature():
     '''Screen to link temperature sensors'''
     form = TemperatureForm()
     #form.level.choices = [(l.id, l.levelname) for l in UserLevel.query.order_by('id')]
-
-    senlist = [('Sensor 1', 'Sensor 1'), ('Sensor 2', 'Sensor 2'), ('Sensor 3', 'Sensor 3')]
+    senlist = []
+    sensoritem = ("none", "None")
+    senlist.append(sensoritem)
+    sensoritem = ("Sensor 1", "Sensor 1")
+    senlist.append(sensoritem)
+    sensoritem = ("Sensor 2", "Sensor 2")
+    senlist.append(sensoritem)
+    sensoritem = ("Sensor 3", "Sensor 3")
+    senlist.append(sensoritem)
     form.t0.choices = senlist
     form.t1.choices = senlist
     form.t2.choices = senlist
