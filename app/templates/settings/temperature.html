@@ -6,35 +6,35 @@
     {{ form.hidden_tag() }}
     <p>
         {{ form.t0.label }}<br>
-        {{ form.t0(cols=60, onchange="doStuff()") }}<br>
+        {{ form.t0(cols=60, onchange="checkDuplicates('t0')") }}<br>
         {% for error in form.t0.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.t1.label }}<br>
-        {{ form.t1(cols=60) }}<br>
+        {{ form.t1(cols=60, onchange="checkDuplicates('t1')) }}<br>
         {% for error in form.t1.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.t2.label }}<br>
-        {{ form.t2(cols=60) }}<br>
+        {{ form.t2(cols=60, onchange="checkDuplicates('t2')) }}<br>
         {% for error in form.t2.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.t3.label }}<br>
-        {{ form.t3(cols=60) }}<br>
+        {{ form.t3(cols=60, onchange="checkDuplicates('t3')) }}<br>
         {% for error in form.t3.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.t4.label }}<br>
-        {{ form.t4(cols=60) }}<br>
+        {{ form.t4(cols=60, onchange="checkDuplicates('t4')) }}<br>
         {% for error in form.t4.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
@@ -46,8 +46,47 @@
 {% block scripts %}
 {{super()}}
 <script>
-    function doStuff(){ 
-        window.alert("Werkt!!");
+    function checkDuplicates(src){
+        var e = document.getElementById(src);
+        var val = e.options[e.selectedIndex].value;
+        if (val != "none"){
+            if (src != "t0"){
+                var _e = document.getElementById("t0");
+                var _val = _e.options[_e.selectedIndex].value;
+                if (_val == val){
+                    _e.value = "none";
+                }
+            }
+            if (src != "t1"){
+                var _e = document.getElementById("t1");
+                var _val = _e.options[_e.selectedIndex].value;
+                if (_val == val){
+                    _e.value = "none";
+                }
+            }
+            if (src != "t2"){
+                var _e = document.getElementById("t2");
+                var _val = _e.options[_e.selectedIndex].value;
+                if (_val == val){
+                    _e.value = "none";
+                }
+            }
+            if (src != "t3"){
+                var _e = document.getElementById("t3");
+                var _val = _e.options[_e.selectedIndex].value;
+                if (_val == val){
+                    _e.value = "none";
+                }
+            }
+            if (src != "t4"){
+                var _e = document.getElementById("t4");
+                var _val = _e.options[_e.selectedIndex].value;
+                if (_val == val){
+                    _e.value = "none";
+                }
+            }
+        }
     }
 </script>
+
 {% endblock %}
