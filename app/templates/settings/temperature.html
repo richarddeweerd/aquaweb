@@ -6,7 +6,7 @@
     {{ form.hidden_tag() }}
     <p>
         {{ form.t0.label }}<br>
-        {{ form.t0(cols=60) }}<br>
+        {{ form.t0(cols=60, onchange="doStuff()") }}<br>
         {% for error in form.t0.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
@@ -41,4 +41,13 @@
     </p>                
     <p>{{ form.submit() }}</p>
 </form>
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script>
+    function doStuff(){ 
+        window.alert("Werkt!!");
+    }
+</script>
 {% endblock %}
