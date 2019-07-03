@@ -13,28 +13,28 @@
     </p>
     <p>
         {{ form.t1.label }}<br>
-        {{ form.t1(cols=60, onchange="checkDuplicates('t1')) }}<br>
+        {{ form.t1(cols=60, onchange="checkDuplicates('t1')") }}<br>
         {% for error in form.t1.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.t2.label }}<br>
-        {{ form.t2(cols=60, onchange="checkDuplicates('t2')) }}<br>
+        {{ form.t2(cols=60, onchange="checkDuplicates('t2')") }}<br>
         {% for error in form.t2.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.t3.label }}<br>
-        {{ form.t3(cols=60, onchange="checkDuplicates('t3')) }}<br>
+        {{ form.t3(cols=60, onchange="checkDuplicates('t3')") }}<br>
         {% for error in form.t3.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.t4.label }}<br>
-        {{ form.t4(cols=60, onchange="checkDuplicates('t4')) }}<br>
+        {{ form.t4(cols=60, onchange="checkDuplicates('t4')") }}<br>
         {% for error in form.t4.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
