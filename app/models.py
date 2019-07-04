@@ -31,6 +31,10 @@ class ReefConfig(db.Model):
     t2 = db.Column(db.String(20))
     t3 = db.Column(db.String(20))
     t4 = db.Column(db.String(20))
+    t1_name = db.Column(db.String(32))
+    t2_name = db.Column(db.String(32))
+    t3_name = db.Column(db.String(32))
+    t4_name = db.Column(db.String(32))
     last_updated = db.Column(db.DateTime, default=datetime.utcnow)
 
 
