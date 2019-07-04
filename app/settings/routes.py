@@ -8,7 +8,7 @@ from app.settings.forms import TemperatureForm
 #from flask_login import login_user, logout_user, current_user
 #from app import DB as db
 
-#from app.models import User, UserLevel
+from app.models import ReefConfig
 
 
 
@@ -28,6 +28,8 @@ def outputs():
 @login_required
 def temperature():
     '''Screen to link temperature sensors'''
+    cfgdata = ReefConfig.query.filter_by(id=1).first_or_404()
+
     form = TemperatureForm()
     #form.level.choices = [(l.id, l.levelname) for l in UserLevel.query.order_by('id')]
     senlist = []
@@ -44,5 +46,5 @@ def temperature():
     form.t2.choices = senlist
     form.t3.choices = senlist
     form.t4.choices = senlist
-
+    form.t1_name.data = cfgdata.t1_name
     return render_template('settings/temperature.html', title='Temperature sensor setup', form=form)

@@ -14,6 +14,7 @@
     <p>
         {{ form.t1.label }}<br>
         {{ form.t1(cols=60, onchange="checkDuplicates('t1')") }}<br>
+        {{ form.t1_name(cols=50) }}<br>
         {% for error in form.t1.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
