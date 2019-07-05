@@ -49,4 +49,4 @@ def temperature():
     form.t3.choices = senlist
     form.t4.choices = senlist
     form.t1_name.data = cfgdata.t1_name
-    return render_template('settings/temperature.html', title='Temperature sensor setup', form=form)
+    return render_template('settings/temperature.html', title='Temperature sensor setup', form=form, sensors=rawdata)
