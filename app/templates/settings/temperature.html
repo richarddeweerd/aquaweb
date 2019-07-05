@@ -4,42 +4,56 @@
 <h1>Temperatur sensor setup</h1>
 <form action="" method="post">
     {{ form.hidden_tag() }}
-    <p>
-        {{ form.t0.label }}<br>
-        {{ form.t0(cols=60, onchange="checkDuplicates('t0')") }}<br>
-        {% for error in form.t0.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.t1.label }}<br>
-        {{ form.t1(cols=60, onchange="checkDuplicates('t1')") }}<br>
-        {{ form.t1_name(cols=50) }}<br>
-        {% for error in form.t1.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.t2.label }}<br>
-        {{ form.t2(cols=60, onchange="checkDuplicates('t2')") }}<br>
-        {% for error in form.t2.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.t3.label }}<br>
-        {{ form.t3(cols=60, onchange="checkDuplicates('t3')") }}<br>
-        {% for error in form.t3.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.t4.label }}<br>
-        {{ form.t4(cols=60, onchange="checkDuplicates('t4')") }}<br>
-        {% for error in form.t4.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>                
+
+
+
+    <table class="table table-striped table-hover">
+        <thead class="thead-light">
+            <tr valign="top">
+                <th>Sensor</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Temperature</th>
+            </tr>
+        </thead>
+
+        <tr valign="top">
+            <td>{{ form.t0.label }}</td>
+            <td>{{ form.t0(cols=60, onchange="checkDuplicates('t0')") }}</td>
+            <td>Internal</td>
+            <td>tmp</td>
+        </tr>
+
+        <tr valign="top">
+            <td>{{ form.t1.label }}</td>
+            <td>{{ form.t1(cols=60, onchange="checkDuplicates('t1')") }}</td>
+            <td>{{ form.t1_name(cols=50) }}</td>
+            <td>tmp</td>
+        </tr>
+
+        <tr valign="top">
+            <td>{{ form.t2.label }}</td>
+            <td>{{ form.t2(cols=60, onchange="checkDuplicates('t2')") }}</td>
+            <td>{{ form.t2_name(cols=50) }}</td>
+            <td>tmp</td>
+        </tr>
+
+        <tr valign="top">
+            <td>{{ form.t3.label }}</td>
+            <td>{{ form.t3(cols=60, onchange="checkDuplicates('t3')") }}</td>
+            <td>{{ form.t3_name(cols=50) }}</td>
+            <td>tmp</td>
+        </tr>
+
+        <tr valign="top">
+            <td>{{ form.t4.label }}</td>
+            <td>{{ form.t4(cols=60, onchange="checkDuplicates('t4')") }}</td>
+            <td>{{ form.t4_name(cols=50) }}</td>
+            <td>tmp</td>
+        </tr>
+
+    </table>
+
     <p>{{ form.submit() }}</p>
 </form>
 {% endblock %}
