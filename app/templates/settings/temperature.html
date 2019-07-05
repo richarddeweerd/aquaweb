@@ -115,13 +115,23 @@
                 }
             }
         }
+        get_data();
     }
     function get_data(){ 
         $.getJSON("/data/rawtemp", function (data, status){
             $.each(data, function(i, item) {
                 document.getElementById(item.id).innerHTML = item.data.value
-                if (document.getElementById("t0").options[document.getElementById("t0").selectedIndex].value == item.id){
-                    document.getElementById("t0_temp").innerHTML = item.data.value;
+
+                var sensors = ['t0', 't1', 't2', 't3', 't4'];
+
+                for (var sens in sensors) {
+                    if (document.getElementById(sens).options[document.getElementById(sens).selectedIndex].value == item.id){
+                        document.getElementById(sens + "_temp").innerHTML = item.data.value;
+                    } else {
+                        if (document.getElementById(sens).options[document.getElementById(sens).selectedIndex].value == "none"){
+                            document.getElementById(sens + "_temp").innerHTML = "";
+                        }
+                    }                
                 }
             });
         });
