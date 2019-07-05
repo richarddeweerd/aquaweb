@@ -8,6 +8,8 @@ from app.settings.forms import TemperatureForm
 #from flask_login import login_user, logout_user, current_user
 #from app import DB as db
 
+from app.functions import file_to_dict
+
 from app.models import ReefConfig
 
 
@@ -30,17 +32,17 @@ def temperature():
     '''Screen to link temperature sensors'''
     cfgdata = ReefConfig.query.filter_by(id=1).first_or_404()
 
+    rawdata = file_to_dict("/var/aquarium/rawtemp")
+
     form = TemperatureForm()
     #form.level.choices = [(l.id, l.levelname) for l in UserLevel.query.order_by('id')]
     senlist = []
     sensoritem = ("none", "None")
     senlist.append(sensoritem)
-    sensoritem = ("Sensor 1", "Sensor 1")
-    senlist.append(sensoritem)
-    sensoritem = ("Sensor 2", "Sensor 2")
-    senlist.append(sensoritem)
-    sensoritem = ("Sensor 3", "Sensor 3")
-    senlist.append(sensoritem)
+    for sens in rawdata:
+        sensoritem = (sens["id"], sens["id"])
+        senlist.append(sensoritem)
+
     form.t0.choices = senlist
     form.t1.choices = senlist
     form.t2.choices = senlist
