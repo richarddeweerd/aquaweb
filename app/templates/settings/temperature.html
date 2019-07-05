@@ -125,11 +125,11 @@
                 var sensors = ['t0', 't1', 't2', 't3', 't4'];
 
                 for (var sens in sensors) {
-                    if (document.getElementById(sens).options[document.getElementById(sens).selectedIndex].value == item.id){
-                        document.getElementById(sens + "_temp").innerHTML = item.data.value;
+                    if (document.getElementById(sensors[sens]).options[document.getElementById(sensors[sens]).selectedIndex].value == item.id){
+                        document.getElementById(sensors[sens] + "_temp").innerHTML = item.data.value;
                     } else {
-                        if (document.getElementById(sens).options[document.getElementById(sens).selectedIndex].value == "none"){
-                            document.getElementById(sens + "_temp").innerHTML = "";
+                        if (document.getElementById(sensors[sens]).options[document.getElementById(sensors[sens]).selectedIndex].value == "none"){
+                            document.getElementById(sensors[sens] + "_temp").innerHTML = "";
                         }
                     }                
                 }
