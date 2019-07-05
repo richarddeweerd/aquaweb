@@ -121,7 +121,7 @@
             $.each(data, function(i, item) {
                 document.getElementById(item.id).innerHTML = item.data.value
                 if (document.getElementById("t0").options[document.getElementById("t0").selectedIndex].value == item.id){
-                    document.getElementById(t0_temp).innerHTML = item.data.value
+                    document.getElementById("t0_temp").innerHTML = item.data.value;
                 }
             });
         });
