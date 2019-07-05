@@ -1,3 +1,6 @@
+import json
+
+
 def file_to_dict(fname):
     '''Read json file and return dictionary'''
     data = {}
