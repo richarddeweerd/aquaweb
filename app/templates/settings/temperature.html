@@ -21,35 +21,35 @@
             <td>{{ form.t0.label }}</td>
             <td>{{ form.t0(cols=60, onchange="checkDuplicates('t0')") }}</td>
             <td>Internal</td>
-            <td>tmp</td>
+            <td id="t0_temp"></td>
         </tr>
 
         <tr valign="top">
             <td>{{ form.t1.label }}</td>
             <td>{{ form.t1(cols=60, onchange="checkDuplicates('t1')") }}</td>
             <td>{{ form.t1_name(cols=50) }}</td>
-            <td>tmp</td>
+            <td id="t1_temp"></td>
         </tr>
 
         <tr valign="top">
             <td>{{ form.t2.label }}</td>
             <td>{{ form.t2(cols=60, onchange="checkDuplicates('t2')") }}</td>
             <td>{{ form.t2_name(cols=50) }}</td>
-            <td>tmp</td>
+            <td id="t2_temp"></td>
         </tr>
 
         <tr valign="top">
             <td>{{ form.t3.label }}</td>
             <td>{{ form.t3(cols=60, onchange="checkDuplicates('t3')") }}</td>
             <td>{{ form.t3_name(cols=50) }}</td>
-            <td>tmp</td>
+            <td id="t3_temp"></td>
         </tr>
 
         <tr valign="top">
             <td>{{ form.t4.label }}</td>
             <td>{{ form.t4(cols=60, onchange="checkDuplicates('t4')") }}</td>
             <td>{{ form.t4_name(cols=50) }}</td>
-            <td>tmp</td>
+            <td id="t4_temp"></td>
         </tr>
 
     </table>
@@ -116,6 +116,16 @@
             }
         }
     }
+    function get_data(){ 
+        $.getJSON("/data/rawtemp", function (data, status){
+            $.each(data, function(i, item) {
+                document.getElementById(item.id).innerHTML = item.data.value
+            });
+        });
+    }
+    get_data();
+    setInterval(get_data, 5000);
+
 </script>
 
 {% endblock %}
