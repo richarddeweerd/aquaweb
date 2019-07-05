@@ -27,7 +27,7 @@ def outputs():
     '''Screen with measurment types list'''
     return render_template('settings/outputs.html')
 
-@bp.route('/settings/temperature')
+@bp.route('/settings/temperature',  methods=['GET', 'POST'])
 @login_required
 def temperature():
     '''Screen to link temperature sensors'''
