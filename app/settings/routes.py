@@ -90,6 +90,11 @@ def temperature():
         flash('Your changes have been saved.')
 
     elif request.method == 'GET':
+        form.t0.data = cfgdata.t0
+        form.t1.data = cfgdata.t1
+        form.t2.data = cfgdata.t2
+        form.t3.data = cfgdata.t3
+        form.t4.data = cfgdata.t4
 
         form.t1_name.data = cfgdata.t1_name
         form.t2_name.data = cfgdata.t2_name
