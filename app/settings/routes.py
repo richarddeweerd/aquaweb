@@ -1,4 +1,7 @@
 '''Settings module routes'''
+
+import time
+
 from flask import render_template, redirect, url_for, flash, request
 
 from flask_login import login_required
@@ -56,7 +59,7 @@ def temperature():
         cfgdata.t2_name = form.t2_name.data
         cfgdata.t3_name = form.t3_name.data
         cfgdata.t4_name = form.t4_name.data
-
+        cfgdata.last_updated = time.time()
         #_account.full_name = form.full_name.data
         #_account.email = form.email.data
         #if _account.id != current_user.id:
