@@ -42,7 +42,12 @@ def temperature():
         sensoritem = (sens["id"], sens["id"])
         senlist.append(sensoritem)
 
-
+    form.t0.choices = senlist
+    form.t1.choices = senlist
+    form.t2.choices = senlist
+    form.t3.choices = senlist
+    form.t4.choices = senlist
+    
     if form.validate_on_submit():
         #_account.username = form.username.data
         #_account.full_name = form.full_name.data
@@ -54,11 +59,7 @@ def temperature():
         #return render_template('settings/temperature.html', title='Temperature sensor setup', form=form, sensors=rawdata)
 
     elif request.method == 'GET':
-        form.t0.choices = senlist
-        form.t1.choices = senlist
-        form.t2.choices = senlist
-        form.t3.choices = senlist
-        form.t4.choices = senlist
+
         form.t1_name.data = cfgdata.t1_name
         form.t2_name.data = cfgdata.t2_name
         form.t3_name.data = cfgdata.t3_name
