@@ -1,6 +1,6 @@
 '''Settings module routes'''
 
-import time
+import datetime
 
 from flask import render_template, redirect, url_for, flash, request
 
@@ -59,7 +59,7 @@ def temperature():
         cfgdata.t2_name = form.t2_name.data
         cfgdata.t3_name = form.t3_name.data
         cfgdata.t4_name = form.t4_name.data
-        cfgdata.last_updated = time.time()
+        cfgdata.last_updated =  datetime.utcnow()
         #_account.full_name = form.full_name.data
         #_account.email = form.email.data
         #if _account.id != current_user.id:
