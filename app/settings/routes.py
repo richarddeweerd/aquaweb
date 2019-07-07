@@ -52,9 +52,13 @@ def temperature():
     form.t2.choices = senlist
     form.t3.choices = senlist
     form.t4.choices = senlist
-    
+
     if form.validate_on_submit():
 
+        if form.t0.data == "none":
+            cfgdata.t0 = ""
+        else:
+            cfgdata.t0 = form.t0.data
         cfgdata.t1_name = form.t1_name.data
         cfgdata.t2_name = form.t2_name.data
         cfgdata.t3_name = form.t3_name.data
