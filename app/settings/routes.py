@@ -8,7 +8,7 @@ from flask_login import login_required
 from app.settings import BP as bp
 from app import DB as db
 
-from app.settings.forms import TemperatureForm
+from app.settings.forms import TemperatureForm, OutputsForm
 #from flask import render_template, redirect, flash, request, url_for
 #from werkzeug.urls import url_parse
 #from flask_login import login_user, logout_user, current_user
@@ -26,11 +26,53 @@ def parameters():
     '''Screen with measurment types list'''
     return render_template('settings/parameters.html')
 
-@bp.route('/settings/outputs')
+@bp.route('/settings/outputs', methods=['GET', 'POST'])
 @login_required
 def outputs():
-    '''Screen with measurment types list'''
-    return render_template('settings/outputs.html')
+    '''Screen to set ouput names'''
+    cfgdata = ReefConfig.query.filter_by(id=1).first_or_404()
+
+    form = OutputsForm()
+
+    if form.validate_on_submit():
+        flash('Your changes have been saved.')
+
+    elif request.method == 'GET':
+
+        form.o1_name = cfgdata.o1_name
+        form.o2_name = cfgdata.o2_name
+        form.o3_name = cfgdata.o3_name
+        form.o4_name = cfgdata.o4_name
+        form.o5_name = cfgdata.o5_name
+        form.o6_name = cfgdata.o6_name
+        form.o7_name = cfgdata.o7_name
+        form.o8_name = cfgdata.o8_name
+        form.o9_name = cfgdata.o9_name
+        form.o10_name = cfgdata.o10_name
+        form.o11_name = cfgdata.o11_name
+        form.o12_name = cfgdata.o12_name
+        form.o13_name = cfgdata.o13_name
+        form.o14_name = cfgdata.o14_name
+        form.o15_name = cfgdata.o15_name
+        form.o16_name = cfgdata.o16_name
+        form.o17_name = cfgdata.o17_name
+        form.o18_name = cfgdata.o18_name
+        form.o19_name = cfgdata.o19_name
+        form.o20_name = cfgdata.o20_name
+        form.o21_name = cfgdata.o21_name
+        form.o22_name = cfgdata.o22_name
+        form.o23_name = cfgdata.o23_name
+        form.o24_name = cfgdata.o24_name
+        form.o25_name = cfgdata.o25_name
+        form.o26_name = cfgdata.o26_name
+        form.o27_name = cfgdata.o27_name
+        form.o28_name = cfgdata.o28_name
+        form.o29_name = cfgdata.o29_name
+        form.o30_name = cfgdata.o30_name
+        form.o31_name = cfgdata.o31_name
+        form.o32_name = cfgdata.o32_name
+
+    return render_template('settings/outputs.html', title='Output setup', form=form)
 
 @bp.route('/settings/temperature', methods=['GET', 'POST'])
 @login_required
