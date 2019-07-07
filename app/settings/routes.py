@@ -35,8 +35,45 @@ def outputs():
     form = OutputsForm()
 
     if form.validate_on_submit():
-        flash('Your changes have been saved.')
+        
+        cfgdata.o1_name = form.o1_name.data
+        cfgdata.o2_name = form.o2_name.data
+        cfgdata.o3_name = form.o3_name.data
+        cfgdata.o4_name = form.o4_name.data
+        cfgdata.o5_name = form.o5_name.data
+        cfgdata.o6_name = form.o6_name.data
+        cfgdata.o7_name = form.o7_name.data
+        cfgdata.o8_name = form.o8_name.data
+        cfgdata.o9_name = form.o9_name.data
+        cfgdata.o10_name = form.o10_name.data
+        cfgdata.o11_name = form.o11_name.data
+        cfgdata.o12_name = form.o12_name.data
+        cfgdata.o13_name = form.o13_name.data
+        cfgdata.o14_name = form.o14_name.data
+        cfgdata.o15_name = form.o15_name.data
+        cfgdata.o16_name = form.o16_name.data
+        cfgdata.o17_name = form.o17_name.data
+        cfgdata.o18_name = form.o18_name.data
+        cfgdata.o19_name = form.o19_name.data
+        cfgdata.o20_name = form.o20_name.data
+        cfgdata.o21_name = form.o21_name.data
+        cfgdata.o22_name = form.o22_name.data
+        cfgdata.o23_name = form.o23_name.data
+        cfgdata.o24_name = form.o24_name.data
+        cfgdata.o25_name = form.o25_name.data
+        cfgdata.o26_name = form.o26_name.data
+        cfgdata.o27_name = form.o27_name.data
+        cfgdata.o28_name = form.o28_name.data
+        cfgdata.o29_name = form.o29_name.data
+        cfgdata.o30_name = form.o30_name.data
+        cfgdata.o31_name = form.o31_name.data
+        cfgdata.o32_name = form.o32_name.data
 
+        cfgdata.last_updated = datetime.utcnow()
+        db.session.commit()
+
+        flash('Your changes have been saved.')
+        
     elif request.method == 'GET':
 
         form.o1_name.data = cfgdata.o1_name
