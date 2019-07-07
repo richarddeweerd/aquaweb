@@ -59,18 +59,35 @@ def temperature():
             cfgdata.t0 = ""
         else:
             cfgdata.t0 = form.t0.data
+
+        if form.t1.data == "none":
+            cfgdata.t1 = ""
+        else:
+            cfgdata.t1 = form.t1.data
+
+        if form.t2.data == "none":
+            cfgdata.t2 = ""
+        else:
+            cfgdata.t2 = form.t2.data
+
+        if form.t3.data == "none":
+            cfgdata.t3 = ""
+        else:
+            cfgdata.t3 = form.t3.data
+
+        if form.t4.data == "none":
+            cfgdata.t4 = ""
+        else:
+            cfgdata.t4 = form.t4.data
+
+
         cfgdata.t1_name = form.t1_name.data
         cfgdata.t2_name = form.t2_name.data
         cfgdata.t3_name = form.t3_name.data
         cfgdata.t4_name = form.t4_name.data
         cfgdata.last_updated = datetime.utcnow()
-        #_account.full_name = form.full_name.data
-        #_account.email = form.email.data
-        #if _account.id != current_user.id:
-        #    _account.level_id = form.level.data
         db.session.commit()
         flash('Your changes have been saved.')
-        #return render_template('settings/temperature.html', title='Temperature sensor setup', form=form, sensors=rawdata)
 
     elif request.method == 'GET':
 
